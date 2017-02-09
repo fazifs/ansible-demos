@@ -3,9 +3,6 @@
 # Nice way to bootstrap a vanilla ec2 AMI by talking to Ansible Tower.
 # To understand Tower callbacks see http://docs.ansible.com/ansible-tower/latest/html/userguide/job_templates.html#provisioning-callbacks
 
-# Install Perl
-sudo yum install perl -y
-
 # Enabled pipelining for Ansible
 /usr/bin/perl -ni -e 'print unless /^Defaults \s+ requiretty/x' /etc/sudoers
 
