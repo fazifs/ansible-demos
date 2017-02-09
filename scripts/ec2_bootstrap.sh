@@ -9,12 +9,12 @@
 # Tower callback
 #domain=${DOMAIN:-bovine.cow}
 #tower=$(dig +short _cm._tcp.${domain} srv | awk '/^0/ {print $4}')
-tower=52.91.183.10
+tower=<tower>
 #request=($(dig +short ${domain} txt | tr -d '"'))
 #template_key=${request[0]}
-template_key=0c3df5340427a69d4b6bcbb87e1b7282
+template_key=<template_key>
 #template_id=${request[1]}
-template_id=67
+template_id=<template_id>
 
 if [[ -z ${tower} ]]; then
     logger 'ansible: could not find tower host'
