@@ -20,3 +20,4 @@
 - fail:
     msg: "Deployment to {{ inventory_hostname }} was not permitted by policy"
   when: deployed|skipped
+  with_dict: "{{ deployed | default({}) }}"

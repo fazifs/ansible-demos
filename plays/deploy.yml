@@ -1,7 +1,7 @@
 ---
 - name: Deploy web application
-  hosts: app
-  become: yes
+  hosts: tag_type-app
+  become: true
 
   roles:
     - { role: app }

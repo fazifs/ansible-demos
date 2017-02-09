@@ -4,8 +4,8 @@ Description=uWSGI instance to serve Flask app
 After=network.target
 
 [Service]
-User=vagrant
-Group=vagrant
+User=root
+Group=root
 WorkingDirectory={{ app_path }}
 Environment="PATH={{ app_path }}/support/bin"
 ExecStart={{ app_path }}/support/bin/uwsgi --ini uwsgi.ini

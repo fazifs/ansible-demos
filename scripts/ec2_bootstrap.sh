@@ -3,15 +3,21 @@
 # Nice way to bootstrap a vanilla ec2 AMI by talking to Ansible Tower.
 # To understand Tower callbacks see http://docs.ansible.com/ansible-tower/latest/html/userguide/job_templates.html#provisioning-callbacks
 
+# Install Perl
+sudo yum install perl -y
+
 # Enabled pipelining for Ansible
 /usr/bin/perl -ni -e 'print unless /^Defaults \s+ requiretty/x' /etc/sudoers
 
 # Tower callback
-domain=${DOMAIN:-bovine.cow}
-tower=$(dig +short _cm._tcp.${domain} srv | awk '/^0/ {print $4}')
-request=($(dig +short ${domain} txt | tr -d '"'))
-template_key=${request[0]}
-template_id=${request[1]}
+#domain=${DOMAIN:-bovine.cow}
+#tower=$(dig +short _cm._tcp.${domain} srv | awk '/^0/ {print $4}')
+tower=52.91.183.10
+#request=($(dig +short ${domain} txt | tr -d '"'))
+#template_key=${request[0]}
+template_key=0c3df5340427a69d4b6bcbb87e1b7282
+#template_id=${request[1]}
+template_id=67
 
 if [[ -z ${tower} ]]; then
     logger 'ansible: could not find tower host'

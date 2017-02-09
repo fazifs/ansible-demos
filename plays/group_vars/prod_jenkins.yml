@@ -12,10 +12,11 @@ jenkins_plugins:
 
 packages:
   - ack
-  - python26-devel
-  - python26-pip
+  - python27-python-devel
+  - python27-python-pip
+  - python2-pip
   - libxslt-devel
   - gcc
 
 packages_pip:
-  - ansible-tower-cli
+  - python2-ansible-tower-cli

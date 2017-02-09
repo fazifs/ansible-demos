@@ -6,8 +6,8 @@
   connection: local
 
   vars:
-    region:   eu-west-1
-    ami:      ami-9d23aeea # Amazon Linux 2014.09.2
+    region:   us-east-1
+    ami:      ami-fa75b4ec 
     keypair:  "{{ ec2_keypair_name | default('you need to define this') }}"
     set_dns:  False
     count:    1
@@ -22,13 +22,13 @@
         module: ec2
         keypair: "{{ keypair }}"
         instance_type: "{{ type | default('t2.micro') }}"
-        vpc_subnet_id: "subnet-{{ vpc_subnet | default('459a9231') }}"
+        vpc_subnet_id: "subnet-{{ vpc_subnet | default('d931e1e5') }}"
         image: "{{ ami }}"
         region: "{{ region }}"
         count: "{{ count }}"
         wait: yes
         instance_tags: "{{ tags }}"
-        #user_data: "{{ lookup('file', '../scripts/ec2_bootstrap.sh') }}"
+        user_data: "{{ lookup('file', '../scripts/ec2_bootstrap.sh') }}"
         assign_public_ip: "{{ assign_eip | default(true) }}"
       register: ec2
 
