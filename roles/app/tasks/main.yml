@@ -1,6 +1,8 @@
 ---
 # tasks file for app
 
+- include_vars: vars/vault.yml
+
 - name: Check for OS support
   fail:
     msg: "OS is not supported"
@@ -21,3 +23,6 @@
     msg: "Deployment to {{ inventory_hostname }} was not permitted by policy"
   when: deployed|skipped
   with_dict: "{{ deployed | default({}) }}"
+
+- include: add-elb.yml
+  when: deploy

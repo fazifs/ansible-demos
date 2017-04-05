@@ -28,7 +28,11 @@
 - name: Download application artifact
   get_url:
     url: http://{{ app_jenkins_host }}:{{ app_jenkins_port }}/job/{{ app_jenkins_job }}/lastSuccessfulBuild/artifact/dist/app.tgz
+    url_username: "{{ app_jenkins_user }}"
+    url_password: "{{ app_jenkins_pass }}"
+    force_basic_auth: yes
     dest: /var/tmp
+  no_log: true
 
 - name: Unarchive artifact
   unarchive:
